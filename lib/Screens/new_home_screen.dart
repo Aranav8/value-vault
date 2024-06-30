@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ridobike/Utils/colors.dart';
 
-import 'formScreen/form_one.dart';
+import 'formScreen/formOne.dart';
 
 class NewHomeScreen extends StatelessWidget {
   const NewHomeScreen({super.key});
@@ -18,8 +20,8 @@ class NewHomeScreen extends StatelessWidget {
                   children: [
                     Container(
                       height: MediaQuery.of(context).size.height * 0.4,
-                      color: const Color(0xfffa2d54),
-                      child: const Center(
+                      color: Color(0xfffa2d54),
+                      child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -65,14 +67,14 @@ class NewHomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 0,
             ),
             Padding(
               padding: const EdgeInsets.all(16.0).copyWith(bottom: 16),
               child: Container(
                   decoration: BoxDecoration(
-                      color: const Color(0xff2b2f3c),
+                      color: Color(0xff2b2f3c),
                       borderRadius: BorderRadius.circular(26)),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -90,8 +92,8 @@ class NewHomeScreen extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => const FormOne(
-                                              tableName: "cars_table")));
+                                          builder: (_) =>
+                                              FormOne(tableName: "cars_table")));
                                 },
                                 child: buildCategoryCard(
                                     Icons.directions_car, 'Cars           ')),
@@ -100,26 +102,26 @@ class NewHomeScreen extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => const FormOne(
-                                            tableName: "bike_table")));
+                                        builder: (_) =>
+                                            FormOne(tableName: "bike_table")));
                               },
                               child: buildCategoryCard(
                                   Icons.motorcycle, 'Motorcycle        '),
                             ),
                             GestureDetector(
-                              onTap: () {
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => const FormOne(
-                                            tableName: "bike_table")));
+                                        builder: (_) =>
+                                            FormOne(tableName: "bike_table")));
                               },
                               child: buildCategoryCard(
                                   Icons.electric_scooter, 'Scooters         '),
                             ),
                           ],
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 60,
                         ),
                         Row(
@@ -127,64 +129,63 @@ class NewHomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () {
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => const FormOne(
-                                            tableName: "car_table")));
+                                        builder: (_) =>
+                                            FormOne(tableName: "car_table")));
                               },
                               child: buildCategoryCard(
                                   Icons.electric_car, 'Electric cars   '),
                             ),
                             GestureDetector(
-                              onTap: () {
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => const FormOne(
-                                            tableName: "ebike_table")));
+                                        builder: (_) =>
+                                            FormOne(tableName: "ebike_table")));
                               },
                               child: buildCategoryCard(
                                   Icons.electric_bike, 'Electric bikes  '),
                             ),
                             GestureDetector(
-                              onTap: () {
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => const FormOne(
-                                            tableName: "escooter_table")));
+                                        builder: (_) =>
+                                            FormOne(tableName: "escooter_table")));
                               },
                               child: buildCategoryCard(
-                                  Icons.battery_charging_full,
-                                  'Electric scooter'),
+                                  Icons.battery_charging_full, 'Electric scooter'),
                             ),
                           ],
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 26,
                         ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   crossAxisAlignment: CrossAxisAlignment.center,
-                        //   children: [
-                        //     Icon(
-                        //       Icons.info_outline,
-                        //       color: colorWhite.withOpacity(0.75),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 8,
-                        //     ),
-                        //     Text("Rating Guide",
-                        //         textAlign: TextAlign.center,
-                        //         style: TextStyle(
-                        //           fontFamily: "MontserratRegular",
-                        //           fontSize: 12,
-                        //           color: colorWhite.withOpacity(0.75),
-                        //         )),
-                        //   ],
-                        // )
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.info_outline,
+                              color: colorWhite.withOpacity(0.75),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text("Rating Guide",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: "MontserratRegular",
+                                  fontSize: 12,
+                                  color: colorWhite.withOpacity(0.75),
+                                )),
+                          ],
+                        )
                       ],
                     ),
                   )),
@@ -204,7 +205,7 @@ class NewHomeScreen extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
             border: Border.all(color: colorWhite.withOpacity(0.75), width: 1),
-            color: const Color(0xff2b2f3c),
+            color: Color(0xff2b2f3c),
           ),
           child: Center(
             child: Column(
@@ -215,7 +216,7 @@ class NewHomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 8.0),
+        SizedBox(height: 8.0),
         Text(
           label,
           style: TextStyle(

@@ -1,10 +1,14 @@
-import 'package:flutter/foundation.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:ridobike/Controller/global_controller.dart';
 import 'package:ridobike/Utils/colors.dart';
 import 'package:ridobike/Utils/utils.dart';
 import 'package:ridobike/Widgets/buy_input_field.dart';
+import 'car_details_screen.dart';
 
 class BuyScreen extends StatefulWidget {
   final String vechileType;
@@ -15,7 +19,9 @@ class BuyScreen extends StatefulWidget {
 }
 
 class _BuyScreenState extends State<BuyScreen> {
+
   dynamic dbHelper;
+
 
   @override
   void initState() {
@@ -36,9 +42,7 @@ class _BuyScreenState extends State<BuyScreen> {
       List<String> allMakes = await dbHelper.getAllMakes();
       return allMakes;
     } catch (error) {
-      if (kDebugMode) {
-        print('Error fetching brands: $error');
-      }
+      print('Error fetching brands: $error');
       throw Exception('Error fetching brands $error');
     }
   }
@@ -49,9 +53,7 @@ class _BuyScreenState extends State<BuyScreen> {
       List<String> allBrands = await dbHelper.searchModelsByMake(brand);
       return allBrands;
     } catch (error) {
-      if (kDebugMode) {
-        print('Error fetching brands: $error');
-      }
+      print('Error fetching brands: $error');
       throw Exception('Error fetching brands: $error');
     }
   }
@@ -59,31 +61,25 @@ class _BuyScreenState extends State<BuyScreen> {
   Future<List<int>> fetchYears(String brand, String model) async {
     try {
       // Get all distinct makes
-      List<int> allYears =
-          await dbHelper.searchYearsByMakeAndModel(brand, model);
+      List<int> allYears = await dbHelper.searchYearsByMakeAndModel(brand, model);
       return allYears;
     } catch (error) {
-      if (kDebugMode) {
-        print('Error fetching models: $error');
-      }
+      print('Error fetching models: $error');
       throw Exception('Error fetching models: $error');
     }
   }
 
-  Future<List<String>> fetchVariants(
-      String brand, String model, int year) async {
+  Future<List<String>> fetchVariants(String brand, String model, int year) async {
     try {
       // Get all distinct variants
-      List<String> allVariants =
-          await dbHelper.searchVariantsByMakeModelYear(brand, model, year);
+      List<String> allVariants = await dbHelper.searchVariantsByMakeModelYear(brand, model, year);
       return allVariants;
     } catch (error) {
-      if (kDebugMode) {
-        print('Error fetching models: $error');
-      }
+      print('Error fetching models: $error');
       throw Exception('Error fetching models: $error');
     }
   }
+
 
   Future<void> showBottomModal(BuildContext context) async {
     showModalBottomSheet(
@@ -184,9 +180,8 @@ class _BuyScreenState extends State<BuyScreen> {
                                   ConnectionState.waiting) {
                                 return const CircularProgressIndicator();
                               } else if (snapshot.hasError) {
-                                if (kDebugMode) {
-                                  print(snapshot.error);
-                                } // Log the error to the console
+                                print(snapshot
+                                    .error); // Log the error to the console
                                 return const Text("Error fetching brands");
                               } else {
                                 final brands = snapshot.data ?? [];
@@ -354,7 +349,7 @@ class _BuyScreenState extends State<BuyScreen> {
                             ),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              const EdgeInsets.symmetric(horizontal: 16.0),
                               child: TextFormField(
                                 style: const TextStyle(
                                   fontFamily: "MontserratSemiBold",
@@ -384,9 +379,8 @@ class _BuyScreenState extends State<BuyScreen> {
                                   ConnectionState.waiting) {
                                 return const CircularProgressIndicator();
                               } else if (snapshot.hasError) {
-                                if (kDebugMode) {
-                                  print(snapshot.error);
-                                } // Log the error to the console
+                                print(snapshot
+                                    .error); // Log the error to the console
                                 return const Text("Error fetching brands");
                               } else {
                                 final models = snapshot.data ?? [];
@@ -397,10 +391,10 @@ class _BuyScreenState extends State<BuyScreen> {
                                     shrinkWrap: true,
                                     // Use shrinkWrap to prevent infinite height error
                                     physics:
-                                        const NeverScrollableScrollPhysics(),
+                                    const NeverScrollableScrollPhysics(),
                                     // Disable GridView scrolling
                                     gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       // Number of columns in the grid
                                       childAspectRatio: 2 / 1,
@@ -408,7 +402,7 @@ class _BuyScreenState extends State<BuyScreen> {
                                       crossAxisSpacing: 16,
                                       // Horizontal spacing between grid items
                                       mainAxisSpacing:
-                                          16, // Vertical spacing between grid items
+                                      16, // Vertical spacing between grid items
                                     ),
                                     itemCount: models.length,
                                     itemBuilder: (context, index) {
@@ -428,14 +422,14 @@ class _BuyScreenState extends State<BuyScreen> {
                                               width: 1,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                            BorderRadius.circular(12),
                                           ),
                                           child: Center(
                                             child: Column(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                              CrossAxisAlignment.center,
                                               children: [
                                                 Container(
                                                   height: 36,
@@ -456,7 +450,7 @@ class _BuyScreenState extends State<BuyScreen> {
                                                   textAlign: TextAlign.center,
                                                   style: const TextStyle(
                                                     fontFamily:
-                                                        "MontserratSemiBold",
+                                                    "MontserratSemiBold",
                                                     fontSize: 12,
                                                     color: Colors.black,
                                                   ),
@@ -485,8 +479,7 @@ class _BuyScreenState extends State<BuyScreen> {
     );
   }
 
-  Future<void> showYearBottomModal(
-      BuildContext context, String brand, String model) async {
+  Future<void> showYearBottomModal(BuildContext context, String brand, String model) async {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.red,
@@ -555,7 +548,7 @@ class _BuyScreenState extends State<BuyScreen> {
                             ),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              const EdgeInsets.symmetric(horizontal: 16.0),
                               child: TextFormField(
                                 style: const TextStyle(
                                   fontFamily: "MontserratSemiBold",
@@ -579,16 +572,14 @@ class _BuyScreenState extends State<BuyScreen> {
                             height: 8,
                           ),
                           FutureBuilder<List<int>>(
-                            future: fetchYears(
-                                controller.brand.value, controller.model.value),
+                            future: fetchYears(controller.brand.value, controller.model.value),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
                                 return const CircularProgressIndicator();
                               } else if (snapshot.hasError) {
-                                if (kDebugMode) {
-                                  print(snapshot.error);
-                                } // Log the error to the console
+                                print(snapshot
+                                    .error); // Log the error to the console
                                 return const Text("Error fetching brands");
                               } else {
                                 final years = snapshot.data ?? [];
@@ -599,10 +590,10 @@ class _BuyScreenState extends State<BuyScreen> {
                                     shrinkWrap: true,
                                     // Use shrinkWrap to prevent infinite height error
                                     physics:
-                                        const NeverScrollableScrollPhysics(),
+                                    const NeverScrollableScrollPhysics(),
                                     // Disable GridView scrolling
                                     gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       // Number of columns in the grid
                                       childAspectRatio: 2 / 1,
@@ -610,15 +601,14 @@ class _BuyScreenState extends State<BuyScreen> {
                                       crossAxisSpacing: 16,
                                       // Horizontal spacing between grid items
                                       mainAxisSpacing:
-                                          16, // Vertical spacing between grid items
+                                      16, // Vertical spacing between grid items
                                     ),
                                     itemCount: years.length,
                                     itemBuilder: (context, index) {
                                       final year = years[index];
                                       return GestureDetector(
                                         onTap: () {
-                                          controller.year.value =
-                                              year.toString();
+                                          controller.year.value = year.toString();
                                           // controller.trim.value = '';
                                           Navigator.pop(context);
                                         },
@@ -629,14 +619,14 @@ class _BuyScreenState extends State<BuyScreen> {
                                               width: 1,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                            BorderRadius.circular(12),
                                           ),
                                           child: Center(
                                             child: Column(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                              CrossAxisAlignment.center,
                                               children: [
                                                 Container(
                                                   height: 36,
@@ -657,7 +647,7 @@ class _BuyScreenState extends State<BuyScreen> {
                                                   textAlign: TextAlign.center,
                                                   style: const TextStyle(
                                                     fontFamily:
-                                                        "MontserratSemiBold",
+                                                    "MontserratSemiBold",
                                                     fontSize: 12,
                                                     color: Colors.black,
                                                   ),
@@ -686,8 +676,7 @@ class _BuyScreenState extends State<BuyScreen> {
     );
   }
 
-  Future<void> showVariantBottomModal(
-      BuildContext context, String brand, String model) async {
+  Future<void> showVariantBottomModal(BuildContext context, String brand, String model) async {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.red,
@@ -756,7 +745,7 @@ class _BuyScreenState extends State<BuyScreen> {
                             ),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              const EdgeInsets.symmetric(horizontal: 16.0),
                               child: TextFormField(
                                 style: const TextStyle(
                                   fontFamily: "MontserratSemiBold",
@@ -780,18 +769,14 @@ class _BuyScreenState extends State<BuyScreen> {
                             height: 8,
                           ),
                           FutureBuilder<List<String>>(
-                            future: fetchVariants(
-                                controller.brand.value,
-                                controller.model.value,
-                                int.parse(controller.year.value)),
+                            future: fetchVariants(controller.brand.value, controller.model.value, int.parse(controller.year.value)),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
                                 return const CircularProgressIndicator();
                               } else if (snapshot.hasError) {
-                                if (kDebugMode) {
-                                  print(snapshot.error);
-                                } // Log the error to the console
+                                print(snapshot
+                                    .error); // Log the error to the console
                                 return const Text("Error fetching brands");
                               } else {
                                 final variants = snapshot.data ?? [];
@@ -802,10 +787,10 @@ class _BuyScreenState extends State<BuyScreen> {
                                     shrinkWrap: true,
                                     // Use shrinkWrap to prevent infinite height error
                                     physics:
-                                        const NeverScrollableScrollPhysics(),
+                                    const NeverScrollableScrollPhysics(),
                                     // Disable GridView scrolling
                                     gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       // Number of columns in the grid
                                       childAspectRatio: 2 / 1,
@@ -813,7 +798,7 @@ class _BuyScreenState extends State<BuyScreen> {
                                       crossAxisSpacing: 16,
                                       // Horizontal spacing between grid items
                                       mainAxisSpacing:
-                                          16, // Vertical spacing between grid items
+                                      16, // Vertical spacing between grid items
                                     ),
                                     itemCount: variants.length,
                                     itemBuilder: (context, index) {
@@ -830,14 +815,14 @@ class _BuyScreenState extends State<BuyScreen> {
                                               width: 1,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                            BorderRadius.circular(12),
                                           ),
                                           child: Center(
                                             child: Column(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                              CrossAxisAlignment.center,
                                               children: [
                                                 Container(
                                                   height: 36,
@@ -858,7 +843,7 @@ class _BuyScreenState extends State<BuyScreen> {
                                                   textAlign: TextAlign.center,
                                                   style: const TextStyle(
                                                     fontFamily:
-                                                        "MontserratSemiBold",
+                                                    "MontserratSemiBold",
                                                     fontSize: 12,
                                                     color: Colors.black,
                                                   ),
@@ -886,7 +871,6 @@ class _BuyScreenState extends State<BuyScreen> {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -936,53 +920,48 @@ class _BuyScreenState extends State<BuyScreen> {
                           isSelectable: true,
                         )),
                     GestureDetector(
-                      onTap: () async {
+                      onTap: () async{
+
                         controller.brand.value != ''
-                            ? showModelBottomModal(
-                                context, controller.brand.value)
+                            ? showModelBottomModal(context, controller.brand.value)
                             : showSnackBar("Select Brand First", context);
                       },
-                      child: BuyInputField(
+                      child:  BuyInputField(
                         title: "Model Name",
                         fieldValue: controller.model.value != ''
                             ? controller.model.value
-                            : "Select Brand first",
+                            :"Select Brand first",
                         isSelectable: true,
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
                         controller.model.value != ''
-                            ? showYearBottomModal(context,
-                                controller.brand.value, controller.model.value)
+                            ? showYearBottomModal(context, controller.brand.value, controller.model.value)
                             : showSnackBar("Select Model First", context);
                       },
                       child: BuyInputField(
                         title: "Year",
-                        fieldValue: controller.year.value != 0
-                            ? controller.year.value.toString()
-                            : "Select Model first",
+                        fieldValue:  controller.year.value != 0
+                            ? controller.year.value.toString():
+                        "Select Model first",
                         isSelectable: true,
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
                         controller.year.value != ''
-                            ? showVariantBottomModal(
-                                context,
-                                controller.brand.value,
-                                controller.model.value,
-                              )
+                            ? showVariantBottomModal(context, controller.brand.value, controller.model.value, )
                             : showSnackBar("Select Model First", context);
                       },
                       child: BuyInputField(
                         title: "Variant Name",
                         fieldValue: controller.variant.value != ''
-                            ? controller.variant.value
-                            : "Select year first",
+                            ? controller.variant.value: "Select year first",
                         isSelectable: true,
                       ),
                     ),
+
                     const BuyInputField(
                       title: "Ownership Serial No.",
                       fieldValue: "Select Serial No.",

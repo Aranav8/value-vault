@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ridobike/Screens/formScreen/form_one.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
+import 'package:ridobike/Screens/formScreen/formOne.dart';
 import 'package:ridobike/Utils/colors.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -67,7 +70,8 @@ class DashboardScreen extends StatelessWidget {
                         fontSize: 24,
                         color: colorWhite.withOpacity(0.8),
                       )),
-                  Text("View evaluated price for old Vehicle",
+                  Text(
+                      "View evaluated price for old Vehicle",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: "MontserratRegular",
@@ -82,7 +86,7 @@ class DashboardScreen extends StatelessWidget {
                   )),
 
                   ///Here
-                  const CustomShape()
+                  CustomShape()
                 ],
               ),
             )
@@ -94,8 +98,6 @@ class DashboardScreen extends StatelessWidget {
 }
 
 class CustomShape extends StatelessWidget {
-  const CustomShape({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -104,7 +106,7 @@ class CustomShape extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Container(
-            margin: const EdgeInsets.only(top: 20.0),
+            margin: EdgeInsets.only(top: 20.0),
             // Adjust the top margin to place the circle
             width: double.infinity,
             height: 360.0,
@@ -113,13 +115,13 @@ class CustomShape extends StatelessWidget {
               borderRadius: BorderRadius.circular(50.0),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 60,
                   ),
                   // Row(
@@ -179,34 +181,32 @@ class CustomShape extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) =>
-                                      const FormOne(tableName: "Car")));
+                                  builder: (_) => FormOne(tableName: "Car")));
                         },
-                        child: const Items(
+                        child: Items(
                           title: "Cars",
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
+                        onTap: (){
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) =>
-                                      const FormOne(tableName: "Motorcycle")));
+                                  builder: (_) => FormOne(tableName: "Motorcycle")));
                         },
-                        child: const Items(
+                        child: Items(
                           title: "Motorcycle",
                         ),
                       ),
-                      const Items(
+                      Items(
                         title: "Scooters",
                       ),
                     ],
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 26,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -221,7 +221,7 @@ class CustomShape extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 36,
                   ),
                   Row(
@@ -255,7 +255,7 @@ class CustomShape extends StatelessWidget {
                   height: 72,
                   width: 72,
                   decoration: BoxDecoration(
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         color: Colors.black26, // Shadow color
                         blurRadius: 20.0, // Spread radius
@@ -312,11 +312,11 @@ class _ItemsState extends State<Items> {
                   end: Alignment.bottomRight,
                 ),
                 borderRadius: BorderRadius.circular(12)),
-            child: const Icon(
+            child: Icon(
               Icons.car_rental,
               color: colorWhite,
             )),
-        const SizedBox(
+        SizedBox(
           height: 6,
         ),
         Text(widget.title,

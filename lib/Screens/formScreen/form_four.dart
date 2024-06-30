@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -11,7 +10,7 @@ import '../../Controller/global_controller.dart';
 
 import '../../Utils/utils.dart';
 import '../car_details_screen.dart';
-import 'form_one.dart';
+import 'formOne.dart';
 import 'form_three.dart';
 import 'form_two.dart';
 
@@ -23,7 +22,6 @@ class FormFour extends StatefulWidget {
   @override
   State<FormFour> createState() => _FormFourState();
 }
-
 TextEditingController _searchKeyController = TextEditingController();
 GlobalController controller = Get.find();
 DataBaseController databaseController = Get.find();
@@ -31,13 +29,12 @@ DataBaseController databaseController = Get.find();
 class _FormFourState extends State<FormFour> {
   dynamic dbHelper;
 
-  Future<void> fetchVariants(String brand, String model, String year) async {
+  Future<void> fetchVariants(
+      String brand, String model, String year) async {
     try {
-      await databaseController.fetchTrim(widget.tableName, brand, model, year);
+      await databaseController.fetchTrim("cars_table",brand, model, year);
     } catch (error) {
-      if (kDebugMode) {
-        print('Error fetching models: $error');
-      }
+      print('Error fetching models: $error');
       throw Exception('Error fetching models: $error');
     }
   }
@@ -226,7 +223,7 @@ class _FormFourState extends State<FormFour> {
                               child: Text(
                                 controller.variant.value,
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontFamily: "MontserratSemiBold",
                                   fontSize: 12,
                                   color: Colors.black,
@@ -244,37 +241,42 @@ class _FormFourState extends State<FormFour> {
                 );
               }),
 
-              const SizedBox(
+
+              SizedBox(
                 height: 26,
               ),
               GestureDetector(
-                onTap: () async {
+                onTap: ()async{
+
                   if (controller.variant.value != 'Variant') {
+
                     await databaseController.fetchData(
-                        controller.brand.value,
-                        controller.model.value,
-                        controller.year.value.toString(),
-                        controller.variant.value,
-                        "cars_table");
-
-                    if (kDebugMode) {
-                      print(databaseController.allvehicle);
-                    }
-
-                    final carData = databaseController.allvehicle.first;
-
-                    // If car data exists, navigate to the CarDetailsScreen
-                    if (kDebugMode) {
-                      print("njdnckdsnckdf");
-                    }
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (_) => CarDetailsScreen(
-                                carData: carData,
-                                tableName: widget.tableName,
-                              )),
+                      controller.brand.value,
+                      controller.model.value,
+                      controller.year.value.toString(),
+                      controller.variant.value,
+                        "cars_table"
                     );
+
+                    print(databaseController.allvehicle);
+
+                    final carData =
+                        databaseController.allvehicle.first;
+
+                    if (carData != null) {
+                      // If car data exists, navigate to the CarDetailsScreen
+                      print("njdnckdsnckdf");
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (_) => CarDetailsScreen(
+                                carData: carData)),
+                      );
+                    } else {
+                      // If car data doesn't exist, show a snackbar or any other feedback
+                      showSnackBar(
+                          'Car details not found.', context);
+                    }
                   } else {
                     showSnackBar("Select Variant first", context);
                   }
@@ -339,9 +341,7 @@ class _FormFourState extends State<FormFour> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator();
                   } else if (snapshot.hasError) {
-                    if (kDebugMode) {
-                      print(snapshot.error);
-                    } // Log the error to the console
+                    print(snapshot.error); // Log the error to the console
                     return const Text("Error fetching brands");
                   } else {
                     final variants = databaseController.allTrims ?? [];
@@ -372,35 +372,37 @@ class _FormFourState extends State<FormFour> {
                               ? searchBrands[index]
                               : variants[index];
                           return GestureDetector(
-                            onTap: () async {
+                            onTap: () async{
                               controller.variant.value = variant;
                               if (controller.variant.value != 'Variant') {
+
                                 await databaseController.fetchData(
                                     controller.brand.value,
                                     controller.model.value,
                                     controller.year.value.toString(),
                                     controller.variant.value,
-                                    widget.tableName);
+                                    "cars_table"
+                                );
 
-                                if (kDebugMode) {
-                                  print(databaseController.allvehicle);
-                                }
+                                print(databaseController.allvehicle);
 
                                 final carData =
                                     databaseController.allvehicle.first;
 
-                                // If car data exists, navigate to the CarDetailsScreen
-                                if (kDebugMode) {
+                                if (carData != null) {
+                                  // If car data exists, navigate to the CarDetailsScreen
                                   print("njdnckdsnckdf");
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (_) => CarDetailsScreen(
+                                            carData: carData)),
+                                  );
+                                } else {
+                                  // If car data doesn't exist, show a snackbar or any other feedback
+                                  showSnackBar(
+                                      'Car details not found.', context);
                                 }
-                                Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                      builder: (_) => CarDetailsScreen(
-                                            carData: carData,
-                                            tableName: widget.tableName,
-                                          )),
-                                );
                               } else {
                                 showSnackBar("Select Variant first", context);
                               }

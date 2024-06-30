@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ridobike/Model/database_model.dart';
@@ -36,23 +36,15 @@ class _ContainerSelectionState extends State<ContainerSelection> {
     super.initState();
 
     // Initialize the 'Good' prices
-    goodMinPrice = widget.carData.minPrice;
-    goodMaxPrice = widget.carData.maxPrice;
+    goodMinPrice = widget.carData.minPrice ?? "0";
+    goodMaxPrice = widget.carData.maxPrice ?? "0";
 
     // Extract numeric part using split
     // Parse price values as double
-    double goodMinPriceValue = double.tryParse(
-            goodMinPrice.split('Rs. ').last.replaceAll(',', '').trim()) ??
-        0;
-    double goodMaxPriceValue = double.tryParse(
-            goodMaxPrice.split('Rs. ').last.replaceAll(',', '').trim()) ??
-        0;
-    if (kDebugMode) {
-      print(goodMaxPriceValue);
-    }
-    if (kDebugMode) {
-      print(goodMinPriceValue);
-    }
+    double goodMinPriceValue = double.tryParse(goodMinPrice.split('Rs. ').last.replaceAll(',', '').trim()) ?? 0;
+    double goodMaxPriceValue = double.tryParse(goodMaxPrice.split('Rs. ').last.replaceAll(',', '').trim()) ?? 0;
+    print(goodMaxPriceValue);
+    print(goodMinPriceValue);
 
     // Bad: 95% of Good
     badMinPrice = (goodMinPriceValue * 0.95);
@@ -82,40 +74,36 @@ class _ContainerSelectionState extends State<ContainerSelection> {
     String priceRange;
     switch (selectedContainerIndex) {
       case 0:
-        priceRange =
-            "Rs. ${formatter.format(badMinPrice)} - Rs. ${formatter.format(badMaxPrice)}";
+        priceRange = "Rs. ${formatter.format(badMinPrice)} - Rs. ${formatter.format(badMaxPrice)}";
         break;
       case 1:
-        priceRange =
-            "Rs. ${formatter.format(fairMinPrice)} - Rs. ${formatter.format(fairMaxPrice)}";
+        priceRange = "Rs. ${formatter.format(fairMinPrice)} - Rs. ${formatter.format(fairMaxPrice)}";
         break;
       case 2:
-        priceRange = "$goodMinPrice - $goodMinPrice";
+        priceRange = "${goodMinPrice} - ${goodMinPrice}";
         break;
       case 3:
-        priceRange =
-            "Rs. ${formatter.format(veryGoodMinPrice)} - Rs. ${formatter.format(veryGoodMaxPrice)}";
+        priceRange = "Rs. ${formatter.format(veryGoodMinPrice)} - Rs. ${formatter.format(veryGoodMaxPrice)}";
         break;
       case 4:
-        priceRange =
-            "Rs. ${formatter.format(excellentMinPrice)} - Rs. ${formatter.format(excellentMaxPrice)}";
+        priceRange = "Rs. ${formatter.format(excellentMinPrice)} - Rs. ${formatter.format(excellentMaxPrice)}";
         break;
       default:
-        priceRange =
-            "Rs. ${formatter.format(goodMinPrice)} - Rs. ${formatter.format(goodMaxPrice)}";
+        priceRange = "Rs. ${formatter.format(goodMinPrice)} - Rs. ${formatter.format(goodMaxPrice)}";
         break;
     }
+
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          priceRange,
+          "$priceRange",
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -140,7 +128,6 @@ class ContainerOption extends StatelessWidget {
   final Function(int) onSelect;
 
   const ContainerOption({
-    super.key,
     required this.index,
     required this.isSelected,
     required this.onSelect,

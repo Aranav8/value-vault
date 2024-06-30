@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import '../../Controller/databaseController.dart';
-import 'form_one.dart';
+import 'formOne.dart';
 import 'package:ridobike/Screens/formScreen/form_four.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:ridobike/Screens/formScreen/form_three.dart';
 import 'package:ridobike/Utils/colors.dart';
 
@@ -25,11 +27,14 @@ GlobalController controller = Get.find();
 DataBaseController databaseController = Get.find();
 
 class _FormTwoState extends State<FormTwo> {
+
   Future<void> fetchModels(String brand) async {
     try {
       // Get all distinct makes
       await databaseController.fetchModels(widget.tableName, brand);
+
     } catch (error) {
+      print('Error fetching brands: $error');
       throw Exception('Error fetching brands $error');
     }
   }
@@ -51,7 +56,7 @@ class _FormTwoState extends State<FormTwo> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 16,
                 ),
                 Obx(() {
@@ -74,7 +79,7 @@ class _FormTwoState extends State<FormTwo> {
                             );
                           },
                           child: Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               minHeight: 26,
                               minWidth: 60,
                             ),
@@ -85,12 +90,12 @@ class _FormTwoState extends State<FormTwo> {
                                     color: Colors.grey.shade100, width: 0.6)),
                             child: Center(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
+                                padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
                                 child: Text(
                                   controller.brand.value,
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: "MontserratSemiBold",
                                     fontSize: 12,
                                     color: Colors.black,
@@ -100,7 +105,7 @@ class _FormTwoState extends State<FormTwo> {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 16,
                         ),
                         GestureDetector(
@@ -116,7 +121,7 @@ class _FormTwoState extends State<FormTwo> {
                             // );
                           },
                           child: Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               minHeight: 26,
                               minWidth: 60,
                             ),
@@ -126,12 +131,12 @@ class _FormTwoState extends State<FormTwo> {
                                     color: Colors.grey.shade100, width: 0.6)),
                             child: Center(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
+                                padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
                                 child: Text(
                                   controller.model.value,
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: "MontserratSemiBold",
                                     fontSize: 12,
                                     color: Colors.black,
@@ -141,7 +146,7 @@ class _FormTwoState extends State<FormTwo> {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 16,
                         ),
                         GestureDetector(
@@ -157,7 +162,7 @@ class _FormTwoState extends State<FormTwo> {
                             );
                           },
                           child: Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               minHeight: 26,
                               minWidth: 60,
                             ),
@@ -168,12 +173,12 @@ class _FormTwoState extends State<FormTwo> {
                                     color: Colors.grey.shade100, width: 0.6)),
                             child: Center(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
+                                padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
                                 child: Text(
                                   controller.year.value.toString(),
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: "MontserratSemiBold",
                                     fontSize: 12,
                                     color: Colors.black,
@@ -183,7 +188,7 @@ class _FormTwoState extends State<FormTwo> {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 16,
                         ),
                         GestureDetector(
@@ -199,23 +204,23 @@ class _FormTwoState extends State<FormTwo> {
                             );
                           },
                           child: Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               minHeight: 26,
                               minWidth: 60,
                             ),
                             decoration: BoxDecoration(
-                                color: Colors.grey.shade100,
+                              color: Colors.grey.shade100,
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
                                     color: Colors.grey.shade100, width: 0.6)),
                             child: Center(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
+                                padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
                                 child: Text(
                                   controller.variant.value,
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: "MontserratSemiBold",
                                     fontSize: 12,
                                     color: Colors.black,
@@ -225,14 +230,14 @@ class _FormTwoState extends State<FormTwo> {
                             ),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 16,
                         ),
                       ],
                     ),
                   );
                 }),
-                const SizedBox(
+                SizedBox(
                   height: 26,
                 ),
                 const Text(
@@ -293,11 +298,11 @@ class _FormTwoState extends State<FormTwo> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const CircularProgressIndicator();
                     } else if (snapshot.hasError) {
-                      // Log the error to the console
+                      print(snapshot.error); // Log the error to the console
                       return const Text("Error fetching brands");
                     } else {
-                      final models = databaseController.allModels;
-                      final searchBrands = databaseController.searchModels;
+                      final models = databaseController.allModels ?? [];
+                      final searchBrands = databaseController.searchModels ?? [];
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16.0, vertical: 8),
@@ -337,6 +342,7 @@ class _FormTwoState extends State<FormTwo> {
                                         FormThree(tableName: widget.tableName),
                                   ),
                                 );
+
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -356,50 +362,6 @@ class _FormTwoState extends State<FormTwo> {
                                         "assets/brands/${controller.brand.value}.png",
                                         width: 38,
                                         height: 38,
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                          String defaultIconPath;
-
-                                          switch (widget.tableName) {
-                                            case 'cars_table':
-                                              defaultIconPath =
-                                                  'assets/defaultBrands/Car.png';
-                                              break;
-                                            case 'bike_table':
-                                              defaultIconPath =
-                                                  'assets/defaultBrands/Bike.png';
-                                              break;
-                                            case 'car_table':
-                                              defaultIconPath =
-                                                  'assets/defaultBrands/Electric car.png';
-                                              break;
-                                            case 'ebike_table':
-                                              defaultIconPath =
-                                                  'assets/defaultBrands/Electric bike.png';
-                                              break;
-                                            case 'escooter_table':
-                                              defaultIconPath =
-                                                  'assets/defaultBrands/Electric Scooter.png';
-                                              break;
-                                            default:
-                                              defaultIconPath =
-                                                  'assets/defaultBrands/Car.png';
-                                          }
-                                          return Image.asset(
-                                            defaultIconPath,
-                                            width: 38,
-                                            height: 38,
-                                            color: Colors.grey,
-                                            errorBuilder:
-                                                (context, error, stackTrace) {
-                                              return const Icon(
-                                                Icons.error,
-                                                color: Colors.red,
-                                                size: 38,
-                                              );
-                                            },
-                                          );
-                                        },
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
@@ -446,7 +408,10 @@ class _ArteonScreenState extends State<ArteonScreen> {
     super.initState();
     // Initialize the appropriate database helper based on the vehicle type
     if (widget.vechileType == 'Car') {
-    } else if (widget.vechileType == 'Motorcycle') {}
+      
+    } else if (widget.vechileType == 'Motorcycle') {
+     
+    }
   }
 
   Future<List<String>> fetchModels(String brand) async {
@@ -455,6 +420,7 @@ class _ArteonScreenState extends State<ArteonScreen> {
       List<String> allBrands = await dbHelper.searchModelsByMake(brand);
       return allBrands;
     } catch (error) {
+      print('Error fetching brands: $error');
       throw Exception('Error fetching brands: $error');
     }
   }
@@ -566,7 +532,8 @@ class _ArteonScreenState extends State<ArteonScreen> {
                                   ConnectionState.waiting) {
                                 return const CircularProgressIndicator();
                               } else if (snapshot.hasError) {
-                                // Log the error to the console
+                                print(snapshot
+                                    .error); // Log the error to the console
                                 return const Text("Error fetching brands");
                               } else {
                                 final models = snapshot.data ?? [];
@@ -678,7 +645,7 @@ class _ArteonScreenState extends State<ArteonScreen> {
               Container(
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: MediaQuery.of(context).size.height * 0.5,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                     color: Colors.black54,
                     borderRadius:
                         BorderRadius.only(bottomRight: Radius.circular(40))),
@@ -686,15 +653,15 @@ class _ArteonScreenState extends State<ArteonScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 36,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 16.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
                       child: Icon(Icons.arrow_back_ios_new_outlined,
                           color: Colors.white),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 36,
                     ),
                     Padding(
@@ -710,7 +677,7 @@ class _ArteonScreenState extends State<ArteonScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 8,
                           ),
                           Container(
@@ -734,8 +701,8 @@ class _ArteonScreenState extends State<ArteonScreen> {
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
                         'Arteon 2019',
                         style: TextStyle(
@@ -745,7 +712,7 @@ class _ArteonScreenState extends State<ArteonScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
                     Image.asset(
                       'assets/images/yellowCar.png',
                       // Replace with your image asset
@@ -753,7 +720,7 @@ class _ArteonScreenState extends State<ArteonScreen> {
                       width: 400,
                       fit: BoxFit.cover,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 48.0),
                       child: Row(
@@ -763,34 +730,34 @@ class _ArteonScreenState extends State<ArteonScreen> {
                           Container(
                             height: 4,
                             width: 4,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                                 color: colorWhite, shape: BoxShape.circle),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 16,
                           ),
                           Container(
                             height: 4,
                             width: 4,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                                 color: Colors.white54, shape: BoxShape.circle),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 16,
                           ),
                           Container(
                             height: 4,
                             width: 4,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                                 color: Colors.white54, shape: BoxShape.circle),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 16,
                           ),
                           Container(
                             height: 4,
                             width: 4,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                                 color: Colors.white54, shape: BoxShape.circle),
                           )
                         ],
@@ -800,30 +767,30 @@ class _ArteonScreenState extends State<ArteonScreen> {
                 ),
               ),
               Container(
-                color: const Color(0xff1e1e1f),
+                color: Color(0xff1e1e1f),
                 width: MediaQuery.of(context).size.width * 0.25,
                 height: MediaQuery.of(context).size.height * 0.5,
                 child: Column(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 48,
                     ),
-                    const Icon(Icons.crop_free, color: Colors.white),
-                    const SizedBox(
+                    Icon(Icons.crop_free, color: Colors.white),
+                    SizedBox(
                       height: 38,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       child: tabItem("Technology", false),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 48,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 36.0),
                       child: tabItem("Specification", false),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 48,
                     ),
                     tabItem("Overview", true),
@@ -832,9 +799,9 @@ class _ArteonScreenState extends State<ArteonScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 36),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 36.0),
+          SizedBox(height: 36),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 36.0),
             child: Text(
               'The All-New Arteon.\nDesigned to Steal\nAttention.',
               style: TextStyle(
@@ -843,9 +810,9 @@ class _ArteonScreenState extends State<ArteonScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 36.0),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 36.0),
             child: Text(
               'An evolution of the classic\nfastback design and interior\ncomfort.',
               style: TextStyle(
@@ -854,7 +821,7 @@ class _ArteonScreenState extends State<ArteonScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 36),
+          SizedBox(height: 36),
           Obx(() {
             return GestureDetector(
               onTap: () {
@@ -891,7 +858,7 @@ class _ArteonScreenState extends State<ArteonScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => FormThree(
-                                                tableName: widget.vechileType,
+                                            tableName: widget.vechileType,
                                               )));
                                 }
                               },
@@ -933,12 +900,12 @@ Widget tabItem(String title, bool isSelected) {
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: 4),
         if (isSelected)
           Container(
             height: 4,
             width: 4,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.yellow,
               shape: BoxShape.circle,
             ),

@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:lottie/lottie.dart';
+import 'package:ridobike/Screens/car_details_screen.dart';
 import 'package:ridobike/Utils/colors.dart';
 import 'package:ridobike/Widgets/buy_input_field.dart';
 
@@ -10,6 +14,7 @@ class SellScreen extends StatefulWidget {
 }
 
 class _SellScreenState extends State<SellScreen> {
+
   Future<void> showBottomModal() async {
     showModalBottomSheet(
       context: context,
@@ -23,8 +28,7 @@ class _SellScreenState extends State<SellScreen> {
             topRight: Radius.circular(16.0),
           ),
           child: Container(
-            constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height * 0.8),
+            constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.8),
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -79,7 +83,7 @@ class _SellScreenState extends State<SellScreen> {
                             ),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              const EdgeInsets.symmetric(horizontal: 16.0),
                               child: TextFormField(
                                 style: const TextStyle(
                                   fontFamily: "MontserratSemiBold",
@@ -103,11 +107,9 @@ class _SellScreenState extends State<SellScreen> {
                             height: 8,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -118,27 +120,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -154,7 +156,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -178,27 +180,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -214,7 +216,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -229,12 +231,11 @@ class _SellScreenState extends State<SellScreen> {
                                   ),
                                 ]),
                           ),
+
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -245,27 +246,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -281,7 +282,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -305,27 +306,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -341,7 +342,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -356,12 +357,11 @@ class _SellScreenState extends State<SellScreen> {
                                   ),
                                 ]),
                           ),
+
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -372,27 +372,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -408,7 +408,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -432,27 +432,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -468,7 +468,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -487,11 +487,9 @@ class _SellScreenState extends State<SellScreen> {
                             height: 8,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -502,27 +500,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -538,7 +536,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -562,27 +560,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -598,7 +596,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -617,11 +615,9 @@ class _SellScreenState extends State<SellScreen> {
                             height: 8,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -632,27 +628,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -668,7 +664,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -692,27 +688,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -728,7 +724,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -747,11 +743,9 @@ class _SellScreenState extends State<SellScreen> {
                             height: 8,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -762,27 +756,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -798,7 +792,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -822,27 +816,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -858,7 +852,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -877,11 +871,9 @@ class _SellScreenState extends State<SellScreen> {
                             height: 8,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -892,27 +884,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -928,7 +920,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -952,27 +944,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -988,7 +980,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -1007,11 +999,9 @@ class _SellScreenState extends State<SellScreen> {
                             height: 8,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
@@ -1022,27 +1012,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -1058,7 +1048,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 12,
                                                       color: colorBlack,
                                                     ),
@@ -1082,27 +1072,27 @@ class _SellScreenState extends State<SellScreen> {
                                               color: Colors.grey.shade200,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                          BorderRadius.circular(12)),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          CrossAxisAlignment.center,
                                           children: [
                                             Center(
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     height: 36,
                                                     width: 36,
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .grey.shade200,
+                                                        color:
+                                                        Colors.grey.shade200,
                                                         shape: BoxShape.circle),
                                                     child: const Icon(
                                                       Icons.car_rental,
@@ -1118,7 +1108,7 @@ class _SellScreenState extends State<SellScreen> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily:
-                                                          "MontserratSemiBold",
+                                                      "MontserratSemiBold",
                                                       fontSize: 14,
                                                       color: colorBlack,
                                                     ),
@@ -1136,6 +1126,7 @@ class _SellScreenState extends State<SellScreen> {
                           const SizedBox(
                             height: 8,
                           ),
+
                         ],
                       ),
                     ),
